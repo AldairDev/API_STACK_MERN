@@ -6,7 +6,7 @@ const morgan = require('morgan');
 // const router = require('./routes/route');
 
 //settings
-app.set('port', port || 3001);
+app.set('port', port || 3002);
 
 
 
