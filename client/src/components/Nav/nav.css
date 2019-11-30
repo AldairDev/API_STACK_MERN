@@ -1,0 +1,44 @@
+.container{
+    height: 105px;
+    background-color: black;
+    color: #FFFFFF;
+}
+
+.nav-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 50px 0 50px;
+}
+.nav-content .title{
+    font-weight: bolder;
+    font-size: 45px;
+}
+.nav-content .nav-log{
+    font-weight: lighter;
+    display: flex;    
+}
+
+.nav-content .nav-log .signin{
+    display: flex;
+    align-items: center;
+}
+
+.nav-content .nav-log .signup{
+    display: flex;
+    align-items: center;
+}
+
+.nav-content .nav-log img{
+    margin-left: 10px;
+    height: 30px;
+    width: 30px;
+}
+
+.nav-content .nav-log .line{
+    height: 40px;
+    border: 1px solid white;
+    margin: 0 15px 0 15px;
+}
