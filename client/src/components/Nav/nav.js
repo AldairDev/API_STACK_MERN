@@ -2,7 +2,7 @@ import React from 'react';
 import './nav.css';
 function Nav() {
     return(
-        <div className="container">
+        <div className="nav-container">
             <nav className="nav-content">
                     <h1 className="title">
                         API PRODUCT

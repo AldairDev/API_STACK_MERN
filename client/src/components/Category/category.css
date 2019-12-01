@@ -1,0 +1,33 @@
+.category-container{
+    width: 20%;
+    /* background-color: yellow; */
+    margin-top: 100px;
+
+}
+
+.category-content .c-title{
+    width: 200px;
+    color: #FF5500;
+    border-bottom: 1px solid #FF5500;
+    font-size: 25px;
+    margin-bottom: 40px;
+}
+
+.category-content .c-videoGames{
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 200px;
+    display: flex;
+    font-size: 15px;
+    color: #666666;
+    font-weight: lighter;
+    border-bottom: 1px solid #666666;
+}
+
+.category-content .c-videoGames img{
+    margin-bottom: 4px;
+    width: 30px;
+    height: 30px;
+}
+
