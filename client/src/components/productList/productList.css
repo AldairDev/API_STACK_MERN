@@ -1,0 +1,75 @@
+.products-container{
+    /* background-color: cadetblue; */
+    margin-top: 20px;
+    width: 1241px;
+    margin-left: 20px;
+}
+
+.products-content .products-title{
+    display: flex;
+    align-items: center;
+}
+.products-content .products-title h1{
+    margin: 0 120px 0 120px;
+}
+.products-content .products-title hr{
+    border: 2px solid #FF5500;
+    width: 100%;
+}
+
+.products-content .list-product{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    /* background-color: cadetblue; */
+    /* height: 100vh; */
+}
+
+.products-content .list-product .product-details{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 40px;
+    height: 450px;
+    width: 350px;
+    /* margin-right: 40px; */
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #666666;
+}
+
+.products-content .list-product .product-details .product-details-span{
+    margin-top: 5px;
+    padding: 0 35px 0 35px;
+}
+
+.products-content .list-product .product-details .product-details-span .product-name{
+    font-size: 15px;
+}
+
+.products-content .list-product .product-details .product-details-span .product-description{
+    margin-top: 13px;
+    margin-bottom: 13px;
+    font-size: 14px;
+    color: #666666;
+}
+
+.products-content .list-product .product-details .product-details-span .price-more{
+    display: flex;
+    justify-content: space-between;
+}
+
+.products-content .list-product .product-details .product-details-span .price-more .product-price{
+    color: #FF5500;
+    font-size: 20px;
+}
+
+.products-content .list-product .product-details .product-details-span .price-more button{
+    border-radius: 5px;
+    color: #ffffff;
+    background: #FF5500;
+    border: 1px sold #FF5500;
+    width: 100px;
+    height: 30px;
+}
