@@ -1,14 +1,19 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './category.css';
 
-export default function category() {
+export default function Category() {
+    
+    const clickme = () =>{
+
+        console.log('gaaaaa')
+    }
     return (
         <div className="category-container">
             <aside className="category-content">
                 <div className="c-title">
                     <span>Productos</span>
                 </div>
-                <div className="c-videoGames">
+                <div onClick={clickme} className="c-videoGames">
                     <span>Consola y videojuegos</span>
                     <img src="./images/game-control-tool.svg" alt="videogame" />
                 </div>

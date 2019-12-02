@@ -22,7 +22,12 @@
     font-size: 15px;
     color: #666666;
     font-weight: lighter;
-    border-bottom: 1px solid #d6d6d6;
+    border-bottom: 1px solid #e2e0e0;
+    cursor: pointer;
+}
+.category-content .c-videoGames:hover{
+    border-radius: 5px;
+    background-color: #ece8e8 ;
 }
 
 .category-content .c-videoGames img{
