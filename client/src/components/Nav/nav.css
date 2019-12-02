@@ -16,6 +16,8 @@
 .nav-content .title{
     font-weight: bolder;
     font-size: 45px;
+    text-decoration: none;
+    color: white;
 }
 .nav-content .nav-log{
     font-weight: lighter;

@@ -1,12 +1,13 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import './nav.css';
 function Nav() {
     return (
         <div className="nav-container">
             <nav className="nav-content">
-                <h1 className="title">
+                    <Link className="title" to="/">
                     API PRODUCT
-                    </h1>
+                    </Link >
                 <div className="nav-log">
                     <div className="signin">
                         <p>Sign in</p>

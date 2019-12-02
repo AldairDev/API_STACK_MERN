@@ -4,7 +4,7 @@ import './components/productList/productList.css'
 import './App.css';
 import Nav from './components/Nav/nav';
 import Category from './components/CategoryList/categoryList'
-// import Products from './components/productList/productList'
+import Products from './components/productList/productList'
 import Categories from './components/Categories/Categories';
 
 
@@ -16,8 +16,8 @@ function App() {
       <Route path="/" component={Nav} />
         <main className="main-container">
           <Route path="/" component={Category} />
-          {/* <Route path="/" component={Products} /> */}
-          <Route path="/:id" component={Categories} />
+          <Route exact path="/" component={Products} />
+          <Route path="/phone" component={Categories} />
         </main>
 
     </Router>

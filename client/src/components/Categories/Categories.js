@@ -7,8 +7,8 @@ export default function Categories() {
     
     useEffect(() => {
         const getCategoryProduct = async() =>{
-            // const id = 'electrodomesticos'
-            const res = await axios.get('http://localhost:3001/');
+            const id = 'electrodomesticos'
+            const res = await axios.get('http://localhost:3001/'+ id);
             setCategoryProduct(res.data);
             console.log(res)
         }
