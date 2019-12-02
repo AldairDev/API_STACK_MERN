@@ -24,6 +24,7 @@
     font-weight: lighter;
     border-bottom: 1px solid #e2e0e0;
     cursor: pointer;
+    text-decoration: none;
 }
 .category-content .c-videoGames:hover{
     border-radius: 5px;

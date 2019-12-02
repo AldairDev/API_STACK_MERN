@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
-import './productList.css'
+import axios from 'axios';
+export default function Categories() {
 
-export default function ProductList() {
+    const [categoryProduct, setCategoryProduct] = useState([])
 
-    const [product, setproduct] = useState([]);
-
+    
     useEffect(() => {
-        const getProduct = async () => {
+        const getCategoryProduct = async() =>{
+            // const id = 'electrodomesticos'
             const res = await axios.get('http://localhost:3001/');
-            setproduct(res.data);
-            // console.log(data);
-            // console.log(product);
+            setCategoryProduct(res.data);
+            console.log(res)
         }
-
-        getProduct();
+        getCategoryProduct();
     }, [])
 
     return (
@@ -22,13 +20,12 @@ export default function ProductList() {
             <div className="products-content">
                 <div className="products-title">
                     <hr />
-                    <h1>Ofertas</h1>
+                    <h1>Phone</h1>
                     <hr />
                 </div>
 
                 <div className="list-product">
-                    {/* {product.map(pro => console.log(pro.name))} */}
-                    {product.map(pro =>
+                    {categoryProduct.map(pro =>
                         <div key={pro._id} className="product-details">
                             <img src="./images/tv-samsung.jpg" width="250" heigth="350" alt="tv-samsung" />
                             <div className="product-details-span">
@@ -42,7 +39,6 @@ export default function ProductList() {
                         </div>
 
                     )}
-
                 </div>
             </div>
         </div>
