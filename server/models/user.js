@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
-
+const bcrypt = require('bcrypt');
+// const pass = 'probando';
 const user = new Schema({
     username: {
         type: String,
@@ -16,5 +17,14 @@ const user = new Schema({
 },
     { timestamps: true }
 );
+
+user.methods.encryptPassword = (password) => {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
+}
+
+user.methods.comparePassword = (password, passbd) => {
+    console.log(`this is the bycrtp password ${password}`)
+    return bcrypt.compareSync(password, passbd);
+}
 
 module.exports = model('users', user);
