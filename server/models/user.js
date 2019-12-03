@@ -23,7 +23,6 @@ user.methods.encryptPassword = (password) => {
 }
 
 user.methods.comparePassword = (password, passbd) => {
-    console.log(`this is the bycrtp password ${password}`)
     return bcrypt.compareSync(password, passbd);
 }
 

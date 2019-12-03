@@ -9,7 +9,7 @@ userController.createUser = async (req, res) => {
     try {
         const emailExist = await user.findOne({ email });
         if (emailExist) {
-            res.send('this email exists');
+            res.status(400).send('email already exists');
         } else {
             const newUser = new user();
             newUser.username = username;
@@ -34,19 +34,25 @@ userController.signin = async (req, res) => {
 
     try {
         if (!userSaved) {
-            return res.json('email doesnt exists')
+            return res.status(400).json('email doesnt exists')
         }
         else if (!newUser.comparePassword(password, userSaved.password)) {
-            return  res.json('password incorrect');
+            return  res.status(400).json('password incorrect');
         }
         else {
-            jwt.sign()
-            return res.json('your in!')
+            res.json('your in!')
+            const token = crearToken(userSaved._id)
+            console.log(token);
         }
     } catch (error) {
 
         console.log(error)
     }
+
+}
+
+const crearToken = (userId) =>{
+    return jwt.sign({id : userId}, 'secretKey')
 }
 
 //funcion para crear un producto por el usuario
