@@ -10,7 +10,7 @@ export default function CategoryList() {
                 <div className="c-title">
                     <span>Productos</span>
                 </div>
-                <Link  name="videogame" className="c-videoGames" to="/videogames">
+                <Link className="c-videoGames" to="/videogames">
                     <span>Consola y videojuegos</span>
                     <img src="./images/game-control-tool.svg" alt="videogame" />
                 </Link>

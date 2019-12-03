@@ -27,11 +27,17 @@
 .nav-content .nav-log .signin{
     display: flex;
     align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
 }
 
 .nav-content .nav-log .signup{
     display: flex;
     align-items: center;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
 }
 
 .nav-content .nav-log img{
