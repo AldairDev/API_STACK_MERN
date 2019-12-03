@@ -40,8 +40,8 @@ userController.signin = async (req, res) => {
             return  res.status(400).json('password incorrect');
         }
         else {
-            res.json('your in!')
             const token = crearToken(userSaved._id)
+            res.json({token})
             console.log(token);
         }
     } catch (error) {
