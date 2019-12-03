@@ -14,6 +14,14 @@ const product = new Schema({
         type: Number,
         required: true
     },
+    imageURL: {
+        type : String,
+        required: true
+    },
+    imageId:{
+        type : String,
+        required : true
+    },
     category: {
         type: String
     },
