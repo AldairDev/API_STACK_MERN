@@ -53,7 +53,8 @@ userController.signin = async (req, res) => {
         else {
             const {_id, username, email} = userSaved
             const user = ({_id, username, email})
-            const token = crearToken(userSaved._id)
+            //creo el token con el id del usuario
+            const token = jwt.sign( { _id }, process.env.SECRET_KEY )
             res.json({token , user})
             console.log(token, user);
         }

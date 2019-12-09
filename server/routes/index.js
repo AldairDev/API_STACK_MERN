@@ -10,7 +10,7 @@ router.route('/')
 router.route('/signup')
     .post(createUser);
 
-router.route('/:category')
+router.route('/category/:category')
     .get(getProductCat);
 
 router.route('/signin')

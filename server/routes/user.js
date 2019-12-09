@@ -4,7 +4,7 @@ const {signin, userProducts, createProduct, updateProduct, Who} = require('../co
 const passport = require('passport');
 const jwtAuthenticate = passport.authenticate('jwt', { session: false });
 
-router.route('/:id')
+router.route('/id/:id')
     .get(userProducts);  
 
 router.route('/addProduct')
@@ -16,5 +16,7 @@ router.route('/who', [jwtAuthenticate])
 router.route('/product/:id')
     .put(updateProduct)
 
+router.route('*')
+    .get((req,res)=> {res.status(404).send('ulr invalid')})
 
 module.exports = router;
