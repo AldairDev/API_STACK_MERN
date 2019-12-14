@@ -64,8 +64,16 @@ userController.signin = async (req, res) => {
 
 }
 
-userController.Who = async (req, res) =>{
-    res.json(esconder(req.user))
+//funcion para saber que usuario soy
+userController.Who = async (req, res, next) =>{
+    let id = req.params.id
+    try {
+        const User = await user.findOne({_id : id})
+        console.log(User);
+        next();
+    } catch (error) {
+        console.log(error)    
+    }
 }
 
 function esconder(user){
@@ -112,8 +120,8 @@ userController.updateProduct = async (req, res) => {
     console.log(updateProduct);
 }
 
-const crearToken = (userId) =>{
-    return jwt.sign({id : userId}, 'secretKey')
-}
+// const crearToken = (userId) =>{
+//     return jwt.sign({id : userId}, 'secretKey')
+// }
 
 module.exports = userController;
