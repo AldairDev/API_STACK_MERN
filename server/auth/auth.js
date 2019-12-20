@@ -1,38 +1,20 @@
-const passportJwt = require('passport-jwt');
-// const userController = require('../controllers/userController')
-// const extractJwt = require('passport-jwt');
+const jwt = require('jsonwebtoken');
 
-let jwtOptions = {
+const verifyToken = (req, res, next) => {
+    const token = req.get("Authorization");
 
-    secretOrKey: process.env.SECRET - KEY,
-    jwtFromRequest: passportJwt.ExtractJwt.fromAuthHeaderAsBearerToken()
-};
-
-module.exports = new passportJwt.Strategy(jwtOptions, (jwtPayload, next) => {
-    
-    // const user = 
-    
-    userController
-        .signin({ id: jwtPayload.id })
-        .then(usuario => {
-            if (!usuario) {
-                log.info(
-                    `JWT token no es válido. Usuario con id ${jwtPayload.id} no existe.`
-                );
-                next(null, false);
-                return;
-            }
-
-            log.info(
-                `Usuario ${
-                usuario.username
-                } suministro un token valido. Autenticación completada.`
-            );
-            next(null, usuario);
+    if (token) {
+        jwt.verify(token, process.env.SECRET_TOKEN_KEY, (err, decoded) => {
+            if (err) return res.status(401).json({ message: 'Token inválida' })
+            else req.decoded = decoded;
+            next();
         })
-        .catch(err => {
-            log.error('Error ocurrió al tratar de validar un token.', err);
-            next(err);
+    }
+    else {
+        res.send({
+            message: 'Token no proveida'
         });
-});
-})
+    }
+}
+
+module.exports = { verifyToken };

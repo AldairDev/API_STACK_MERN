@@ -6,9 +6,9 @@ const cloudinary = require('cloudinary');
 const fs = require('fs-extra');
 
 cloudinary.config({
-    cloud_name : process.env.CLOUDINARY_NAME,
-    api_key : process.env.CLOUDINARY_KEY,
-    api_secret : process.env.CLOUDINARY_SECRET
+    cloud_name: process.env.CLOUDINARY_NAME,
+    api_key: process.env.CLOUDINARY_KEY,
+    api_secret: process.env.CLOUDINARY_SECRET
 })
 
 //funcion para crear un nuevo usuario
@@ -36,9 +36,9 @@ userController.createUser = async (req, res) => {
 
 //function to signin an user
 userController.signin = async (req, res) => {
-    const {email, password } = req.body
+    const { email, password } = req.body
     const emailLowerCase = email.toLowerCase();
-    const userSaved = await user.findOne({ email : emailLowerCase })
+    const userSaved = await user.findOne({ email: emailLowerCase })
 
     console.log(userSaved);
     const newUser = new user();
@@ -48,14 +48,14 @@ userController.signin = async (req, res) => {
             return res.status(400).json('email doesnt exists')
         }
         else if (!newUser.comparePassword(password, userSaved.password)) {
-            return  res.status(400).json('password incorrect');
+            return res.status(400).json('password incorrect');
         }
         else {
-            const {_id, username, email} = userSaved
-            const user = ({_id, username, email})
+            const { _id, username, email } = userSaved
+            const user = ({ _id, username, email })
             //creo el token con el id del usuario
-            const token = jwt.sign( { _id }, process.env.SECRET_KEY )
-            res.json({token , user})
+            const token = jwt.sign({ _id}, process.env.SECRET_TOKEN_KEY, {expiresIn : 1440})
+            res.json({ token, user })
             console.log(token, user);
         }
     } catch (error) {
@@ -65,22 +65,46 @@ userController.signin = async (req, res) => {
 }
 
 //funcion para saber que usuario soy
-userController.Who = async (req, res, next) =>{
+userController.Who = async (req, res, next) => {
     let id = req.params.id
     try {
-        const User = await user.findOne({_id : id})
-        console.log(User);
-        next();
+        const User = await user.findOne({ _id: id })
+        if (User) {
+            console.log(User);
+            next(User);
+        }
+        else {
+            let notFound = 'user not found'
+            next(notFound);
+        }
     } catch (error) {
-        console.log(error)    
+        console.log(error)
     }
 }
 
-function esconder(user){
+userController.prueba = async (id) => {
+    try {
+        const User = await user.findOne({ _id: id })
+        if (User) {
+            console.log('this is de user for payload')
+            console.log(User);
+            next();
+        }
+        else {
+            let notFound = 'user not found'
+            next(notFound);
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+function esconder(user) {
     return {
         _id: user._id || user.id,
-        email : user.email,
-        username : user.username
+        email: user.email,
+        username: user.username
     }
 }
 
@@ -89,17 +113,17 @@ userController.createProduct = async (req, res) => {
     const image = req.file
     const resultImg = await cloudinary.v2.uploader.upload(req.file.path);
     const { product_owner, name, price, category, description } = req.body;
-    const newProduct = await new product({ 
-        product_owner, 
-        name, 
-        price, 
-        imageURL : resultImg.url, 
-        imageId :resultImg.public_id ,
-        category, 
-        description 
+    const newProduct = await new product({
+        product_owner,
+        name,
+        price,
+        imageURL: resultImg.url,
+        imageId: resultImg.public_id,
+        category,
+        description
     }).save();
     await fs.unlink(req.file.path);
-    
+
     res.json(newProduct);
     console.log(image);
     console.log(resultImg);

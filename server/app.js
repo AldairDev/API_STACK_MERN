@@ -6,6 +6,8 @@ const morgan = require('morgan');
 const path = require('path');
 const multer = require('multer');
 
+const passport = require('passport'); 
+
 const storage = multer.diskStorage({
     destination: path.join(__dirname, 'public/uploads' ),
     filename: (req, file, cb) => {
@@ -20,11 +22,14 @@ app.set('port', port || 3002);
 
 
 //middelware
+
 app.use(express.json());
 app.use(express.urlencoded({extended: false}))
 app.use(morgan('dev'));
 app.use(multer({storage}).single('image'));
 app.use(cors());
+app.use(passport.initialize());
+
 //routes
 
 app.use('/', require('./routes/index'));
