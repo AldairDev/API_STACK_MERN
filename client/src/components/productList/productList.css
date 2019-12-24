@@ -19,20 +19,24 @@
 
 .products-content .list-product{
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    justify-content: flex-start;
+    /* flex-wrap: wrap; */
+    flex-flow: row wrap;
     margin-top: 40px;
     /* background-color: cadetblue; */
     /* height: 100vh; */
 }
 
 .products-content .list-product .product-details{
+    margin-left: 30px;
+    margin-right: 30px;
     display: flex;
     align-items: center;
     flex-direction: column;
     margin-bottom: 40px;
     height: 450px;
     width: 350px;
+
     /* margin-right: 40px; */
     background-color: #ffffff;
     border-radius: 10px;

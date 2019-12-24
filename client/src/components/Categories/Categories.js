@@ -3,12 +3,12 @@ import axios from 'axios';
 export default function Categories() {
 
     const [categoryProduct, setCategoryProduct] = useState([])
-    
-    
+
+
     useEffect(() => {
-        const getCategoryProduct = async() =>{
+        const getCategoryProduct = async () => {
             const id = 'electrodomesticos'
-            const res = await axios.get('http://localhost:3001/phone');
+            const res = await axios.get('http://localhost:3001/category/phone');
             setCategoryProduct(res.data);
             console.log(res)
         }

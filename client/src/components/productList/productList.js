@@ -30,9 +30,9 @@ export default function ProductList() {
                     {/* {product.map(pro => console.log(pro.name))} */}
                     {product.map(pro =>
                         <div key={pro._id} className="product-details">
-                            <img src="./images/tv-samsung.jpg" width="250" heigth="350" alt="tv-samsung" />
+                            <img src={pro.imageURL} width="250" heigth="350" alt="tv-samsung" />
                             <div className="product-details-span">
-                                <strong className="product-name">samsung</strong>
+                                <strong className="product-name">{pro.name}</strong>
                                 <p className="product-description"> {pro.description} </p>
                                 <div className="price-more">
                                     <strong className="product-price">S/.{pro.price} </strong>
